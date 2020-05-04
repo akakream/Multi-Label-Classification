@@ -1,0 +1,10 @@
+__pycache__
+ResNet50
+ResNet50.zip
+.venv
+ucMerced/multilabels.zip
+ucMerced/UCMerced_LandUse.zip
+ucMerced/UCMerced_LandUse
+ucMerced/multilabels
+X_TRAIN.pickle
+Y_TRAIN.pickle
