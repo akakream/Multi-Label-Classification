@@ -6,5 +6,6 @@ ucMerced/multilabels.zip
 ucMerced/UCMerced_LandUse.zip
 ucMerced/UCMerced_LandUse
 ucMerced/multilabels
-X_TRAIN.pickle
-Y_TRAIN.pickle
+pickleRick/
+ucMerced/
+run.sh

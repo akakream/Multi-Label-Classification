@@ -32,7 +32,7 @@ def readData():
 		Rows.append(row_list)
 
 	# iterates through every file under the given path and finds the paths of the filenames given in the excel file 
-	for root, dirs, files in os.walk("./ucMerced/UCMerced_LandUse/Splits"):
+	for root, dirs, files in os.walk("./ucMerced/Splits"):
 		for name in files:
 			for row in Rows:
 				if row[0] == name[:-4]: # if the file is found
@@ -87,6 +87,22 @@ def readData():
 
 	pickle_out = open('Y_TRAIN.pickle', 'wb')
 	pickle.dump(Y_TRAIN, pickle_out)
+	pickle_out.close()
+
+	pickle_out = open('X_TEST.pickle', 'wb')
+	pickle.dump(X_TEST, pickle_out)
+	pickle_out.close()
+
+	pickle_out = open('Y_TEST.pickle', 'wb')
+	pickle.dump(Y_TEST, pickle_out)
+	pickle_out.close()
+
+	pickle_out = open('X_VALIDATION.pickle', 'wb')
+	pickle.dump(X_VALIDATION, pickle_out)
+	pickle_out.close()
+
+	pickle_out = open('Y_VALIDATION.pickle', 'wb')
+	pickle.dump(Y_VALIDATION, pickle_out)
 	pickle_out.close()
 
 	print(X_TRAIN.shape)

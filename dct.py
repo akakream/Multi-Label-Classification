@@ -5,6 +5,10 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from readData import readData
 import model
+import pickle
+import datetime
+
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 # Each image measures 256x256 pixels.
 IMG_SIZE = 256
@@ -21,9 +25,9 @@ There are originally 21 classes in the 'UC Merced Land Use Dataset' and 100 imag
 Yi Yang and Shawn Newsam, "Bag-Of-Visual-Words and Spatial Extensions for Land-Use Classification," 
 ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM GIS), 2010.
 '''
-TRAINING_DIR = './ucMerced/UCMerced_LandUse/Splits/training'
-TEST_DIR = './ucMerced/UCMerced_LandUse/Splits/test'
-VALIDATION_DIR = './ucMerced/UCMerced_LandUse/Splits/validation'
+TRAINING_DIR = './ucMerced/Splits/training'
+TEST_DIR = './ucMerced/Splits/test'
+VALIDATION_DIR = './ucMerced/Splits/validation'
 
 '''
 17 CLASSSES that were used for multi-label annotation by RSIM
@@ -39,18 +43,30 @@ def plot():
 def main():
 
 	# Loads the dataset
-	(X_TRAIN, Y_TRAIN, X_TEST, Y_TEST, X_VALIDATION, Y_VALIDATION) = readData()
+	X_TRAIN = pickle.load(open("pickleRick/X_TRAIN.pickle", "rb"))
+	Y_TRAIN = pickle.load(open("pickleRick/Y_TRAIN.pickle", "rb"))
+	X_TEST = pickle.load(open("pickleRick/X_TEST.pickle", "rb"))
+	Y_TEST = pickle.load(open("pickleRick/Y_TEST.pickle", "rb"))
+	X_VALIDATION = pickle.load(open("pickleRick/X_VALIDATION.pickle", "rb"))
+	Y_VALIDATION = pickle.load(open("pickleRick/Y_VALIDATION.pickle", "rb"))
 	# x_train = tf.keras.utils.normalize(x_train, axis=1)
 	# x_test = tf.keras.utils.normalize(x_test, axis=1)
-
-	print(X_TRAIN.shape)
+	
+	X_TRAIN = X_TRAIN/255.0
+	#print(f'X_TRAIN:{X_TRAIN[0]}')
+	#print(f'Y_TRAIN:{Y_TRAIN[0]}')
 
 	dct_model = model.buildModel()
 	model.train(dct_model, X_TRAIN, Y_TRAIN)
+	model_sum = dct_model.summary()
+	print(f'model summary: {model_sum}')
 	model.eval(dct_model, X_TEST, Y_TEST)
-	print(dct_model.summary())
+	try:
+		model.predict(dct_model, X_TEST)
+	except:
+		print("model.predict gave an error")
 	model.saveModel(dct_model)	
-
+	
 	# preds = dct_model.predict(X_test)
 	# preds[preds>=0.5] = 1
 	# preds[preds<0.5] = 0

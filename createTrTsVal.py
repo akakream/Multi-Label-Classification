@@ -1,12 +1,8 @@
 import os
 
-'''
-Put this file under codeUcMerced/ucMerced/UCMerced_LandUse
-'''
-
-trainingFolder = './Splits/training'
-testFolder = './Splits/test'
-validationFolder = './Splits/validation'
+trainingFolder = './ucMerced/Splits/training'
+testFolder = './ucMerced/Splits/test'
+validationFolder = './ucMerced/Splits/validation'
 
 for folder in os.listdir(trainingFolder):
 	for filename in os.listdir(f'{trainingFolder}/{folder}')[-30:]:

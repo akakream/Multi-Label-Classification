@@ -59,10 +59,14 @@ def buildModel():
 	return model
 
 def train(model, X_TRAIN, Y_TRAIN):
-	model.fit(X_TRAIN, Y_TRAIN, epochs=3)    
+	model.fit(X_TRAIN, Y_TRAIN, batch_size=32, epochs=10)    
 
 def eval(model, X_TEST, Y_TEST):
-	val_loss, val_acc = model.evaluate(X_TEST, Y_TEST)    
+	val_loss, val_acc = model.evaluate(X_TEST, Y_TEST, batch_size=32)
+	print(f'val_loss is {val_loss} and val_acc is {val_acc}')    
+
+def predict(model, X_TEST):
+	print (model.predict(X_TEST[1,:]))
 
 def saveModel(model):
 	model.save('DCT_UC_Merced')
