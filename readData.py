@@ -59,6 +59,8 @@ def readData():
 	# print(training_data[0])
 	# print(len(training_data))
 
+	pd.DataFrame(training_data).to_csv("trainingdata.csv")
+
 	for features, labels in training_data:
 		X_TRAIN.append(features)
 		Y_TRAIN.append(labels)

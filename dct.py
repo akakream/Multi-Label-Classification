@@ -53,6 +53,8 @@ def main():
 	# x_test = tf.keras.utils.normalize(x_test, axis=1)
 	
 	X_TRAIN = X_TRAIN/255.0
+    X_TEST = X_TEST/255.0
+    X_VALIDATION = X_VALIDATION/255.0
 	#print(f'X_TRAIN:{X_TRAIN[0]}')
 	#print(f'Y_TRAIN:{Y_TRAIN[0]}')
 
