@@ -112,4 +112,3 @@ def readData():
 
 	return (X_TRAIN, Y_TRAIN, X_TEST, Y_TRAIN, X_VALIDATION, Y_VALIDATION)
 
-readData()
