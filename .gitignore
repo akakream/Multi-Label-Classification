@@ -8,8 +8,10 @@ ucMerced/UCMerced_LandUse
 ucMerced/multilabels
 pickleRick/
 ucMerced/
-run.sh
+*.sh
 trainingdata.csv
 testShape.py
 DCT_UC_Merced/
-dct_output.out
+*.out
+test1.py
+testModel.py
