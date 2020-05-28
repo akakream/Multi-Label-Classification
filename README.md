@@ -9,3 +9,7 @@ optional arguments:
 -c CLASSES, --classes CLASSES Number of classes. This is going to be added to the last layer of the model
 -b BATCH_SIZE, --batch_size BATCH_SIZE Batch size, default is 64
 -e EPOCHS, --epochs EPOCHS Number of epochs, default is 10
+
+# Example
+
+`python resnet.py -d=./../data/pickleApperal -s=256,256,3 -c=11 -b=64 -e=6` 
